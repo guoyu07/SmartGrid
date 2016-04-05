@@ -4,13 +4,15 @@ namespace SmartGrid\helpers;
 
 class Html
 {
-    public static function fontAwesome($class) 
+    public static function fontClass($class) 
     {
         return self::tag('i', ['class' => $class], '');
     }
 
-    public static function tag($tag, $htmlOptions = [], $content = false, $closeTag = true)
+	public static function tag($tag, $htmlOptions = [], $content = false, $closeTag = true)
     {
+		$htmlOptions = is_array($htmlOptions) ? $htmlOptions : [];
+		
         $html = '<'. $tag . self::parseAttributes($htmlOptions);
         if ($content !== false) {
             $html .= $closeTag ? '>'. $content . self::closeTag($tag) : '>'. $content;
@@ -20,7 +22,7 @@ class Html
         return $html;
     }
 
-    public static function openTag($tag, $htmlOptions = [])
+	public static function openTag($tag, $htmlOptions = [])
     {
         return self::tag($tag, $htmlOptions, false, false);
     }

@@ -9,7 +9,7 @@ if (SMART_GRID_ENABLE_AUTOLOAD) {
         $prefixLength = strlen('SmartGrid');
         if (0 === strncmp('SmartGrid', $class, $prefixLength)) {
             $file = str_replace('\\', DIRECTORY_SEPARATOR, substr($class, $prefixLength));
-            $file = realpath(__DIR__.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.$file.'.php');
+            $file = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . $file . '.php');
             if (file_exists($file)) {
                 require_once $file;
             }
@@ -17,7 +17,6 @@ if (SMART_GRID_ENABLE_AUTOLOAD) {
     });
 }
 
-class SmartGrid extends \SmartGrid\SmartGrid
-{
-
+class SmartGrid extends \SmartGrid\SmartGrid {
+    
 }
